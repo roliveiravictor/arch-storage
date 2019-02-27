@@ -1,0 +1,57 @@
+task ciBuildPro(dependsOn: [':storage:assembleRelease']) << {
+    println "-------- ciBuildPro"
+}
+
+task ciBuildDev(dependsOn: [':storage:assembleDebug']) << {
+    println "-------- ciBuildPre"
+}
+
+task ciTest(dependsOn: [':storage:test']) << {
+    println "-------- ciTest"
+    println "-------- starting jacoco..."
+    tasks.findByName('jacocoTest')
+}
+
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.3.0'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        classpath 'com.google.gms:google-services:3.0.0'
+    }
+}
+
+allprojects {
+    repositories {
+        mavenLocal()
+        jcenter()
+        google()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+
+    minSdkVersion = 19
+    targetSdkVersion = 28
+    compileSdkVersion = 28
+    buildToolsVersion = '28.0.3'
+
+    versionCode = 1
+    versionName = '1.0.3'
+    aarName = 'storage'
+    groupId = 'br.com.stonetree.storage'
+    projectVersion = versionName + '-RELEASE'
+
+    jacocoVersion = "0.8.2"
+
+    arrDescription = 'ARCH SDK - Storage'
+
+}

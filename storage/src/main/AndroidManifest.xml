@@ -1,0 +1,18 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="br.com.stonetree.storage">
+
+    <application>
+
+        <activity
+            android:noHistory="true"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Translucent"
+            android:name="br.com.stonetree.storage.feature.storage.request.Request"
+            />
+
+    </application>
+
+</manifest>
+
+
